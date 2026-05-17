@@ -128,7 +128,7 @@ Sistem dibangun dengan arsitektur **Serverless + Microservices ringan** untuk sk
 
 | Layer | Teknologi | Kenapa? |
 |---|---|---|
-| Framework | React.js (via Vite) | Performa build cepat + HMR. Ekosistem luas untuk komponen dashboard kompleks. |
+| Framework | Next.js (typescript) | Performa build cepat + HMR. Ekosistem luas untuk komponen dashboard kompleks. |
 | Styling | Tailwind CSS | Utility-first CSS untuk desain kustom cepat. Konsistensi visual tanpa framework berat. |
 | Komponen UI | Headless UI / Radix UI | Komponen accessible (modal, dropdown) tanpa opini styling — cocok untuk desain korporat. |
 | State Management | Zustand | Ringan dan terdesentralisasi. Cocok untuk dashboard kompleks tanpa boilerplate Redux. |
@@ -150,7 +150,7 @@ Sistem dibangun dengan arsitektur **Serverless + Microservices ringan** untuk sk
 
 | Layer | Teknologi | Kenapa? |
 |---|---|---|
-| Payment / Escrow | Xendit / Midtrans | Generate VA + Split Payment otomatis ke rekening Koperasi setelah escrow release. |
+| Payment / Escrow | Midtrans | Generate VA + Split Payment otomatis ke rekening Koperasi setelah escrow release. |
 | Push Notif | Firebase Cloud Messaging (FCM) | Alert suhu dan update status order ke semua device terdaftar. |
 
 ### 5D — Perangkat Keras IoT
@@ -170,7 +170,7 @@ ESP32 (IoT Device)  →  GSM SIM800L  →  Firebase Realtime DB (telemetry node)
                                                  ↓
 React PWA (Buyer Dashboard)  ←  subscribe()  ←  RTDB live listener
 
-Buyer  →  Checkout  →  Xendit/Midtrans (VA)  →  Cloud Function webhook
+Buyer  →  Checkout  →  Midtrans (VA)  →  Cloud Function webhook
                                                           ↓
                                 Firestore order.status = PROCESSING
                                 + FCM Notification ke Supplier
@@ -212,16 +212,6 @@ GPS Geofence Trigger  →  Cloud Function  →  Escrow Release API
 | Penerimaan & Komplain | Validasi kargo selamat ATAU ajukan sengketa dengan bukti log IoT. | P1 |
 | Riwayat Pembelian | Semua order historis + data IoT terlampir sebagai bukti legal. | P2 |
 | Manajemen Vendor | Daftar Koperasi langganan, rating personal, catatan internal. | P2 |
-
-### 6C — Fitur Admin (Internal Taniga)
-
-| Fitur | Deskripsi | Prioritas |
-|---|---|---|
-| KYC & Verifikasi | Review dokumen legal Koperasi (NIB, akta) sebelum akun diaktifkan. | P1 |
-| Manajemen Alat IoT | Inventaris ESP32: status, lokasi terakhir, riwayat pairing, baterai. | P1 |
-| Dispute Resolution | Review log IoT, komunikasi dua pihak, keputusan escrow release/refund. | P1 |
-| Platform Analytics | Dashboard GMV, transaksi, komoditas terlaris, distribusi geografis. | P2 |
-
 ---
 
 ## 07. Alur Kerja Transaksi
@@ -397,33 +387,6 @@ ESP32 **wajib** menyimpan data suhu ke SPIFFS/SD Card saat kehilangan sinyal GPR
 - Data IoT jadi **bukti objektif sengketa** — tidak ada platform lain yang menawarkan ini
 - Dibangun khusus untuk skala Koperasi Indonesia
 
----
-
-## 13. Timeline & Pembagian Tim
-
-### Timeline 12 Minggu
-
-| Fase | Yang Dikerjakan |
-|---|---|
-| Minggu 1–2 | Setup project (Firebase, Vite+React, Zustand). Desain database schema. Wireframe semua halaman. |
-| Minggu 3–4 | Autentikasi Firebase (multi-role). Halaman marketplace Buyer. Katalog produk Supplier. |
-| Minggu 5–6 | Flow checkout + integrasi Xendit/Midtrans (sandbox). Sistem escrow & webhook Cloud Function. |
-| Minggu 7–8 | Dashboard IoT Buyer: live map Leaflet, grafik suhu Chart.js, subscribe RTDB. Pairing IoT Supplier. |
-| Minggu 9–10 | Firmware ESP32: sensor DHT22, GPS, GPRS SIM800L, Store & Forward ke SPIFFS. |
-| Minggu 11 | Dompet Supplier, pencairan dana, dispute panel Admin, notifikasi FCM. |
-| Minggu 12 | PWA config (Workbox), testing end-to-end, Lighthouse audit, persiapan demo. |
-
-### Pembagian Tim
-
-| Peran | Tanggung Jawab |
-|---|---|
-| Frontend Dev (1–2) | React PWA, Zustand, Chart.js, Leaflet, integrasi Firebase RTDB listener, UI dashboard |
-| Backend Dev (1) | Firebase Cloud Functions, Security Rules, integrasi Xendit/Midtrans, Firestore schema |
-| IoT Engineer (1) | Firmware ESP32, wiring sensor + GPS + SIM800L, Store & Forward, OTA update |
-| UI/UX Designer (1) | Desain sistem, prototype Figma, panduan warna & tipografi, review usability |
-
----
-
 ## 14. Risiko & Mitigasi
 
 | Risiko | Mitigasi |
@@ -460,3 +423,4 @@ Desain     : Clean Corporate — Monokromatik Hijau & Putih
              #1A5C2A (Primary) · #FFFFFF (Base)
              Inter/Calibri (UI) · JetBrains Mono (Data IoT)
 ```
+Bagi Menjadi Beberapa fase penegerjaan dan implementation plan
