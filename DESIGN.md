@@ -1,95 +1,111 @@
-# Taniga Design System (TDS)
+Taniga Design System (TDS)
 
-**Versi:** 1.0  
-**Tema Utama:** "Agri-Tech Premium & Clean Corporate"  
-**Filosofi:** Menghilangkan kesan tradisional dan kotor dari industri pertanian, mengubahnya menjadi dasbor data yang transparan, modern, kredibel, dan sangat mudah dibaca (*glanceable*).
+Versi: 1.0 (Omnichannel & E-Grocery UI Update)
 
----
+Tema Utama: "Agri-Tech Premium, Clean Corporate, & Modern E-Grocery"
 
-## 1. Palet Warna (Color Palette)
+Filosofi: Menggabungkan kemudahan belanja harian (seamless shopping) layaknya Sayurbox di layar Mobile, dengan kecanggihan dasbor analitik IoT dan manajemen toko ala Shopee Seller Center.
 
-Alih-alih menggunakan warna "hijau daun" standar yang generik, Taniga menggunakan warna **"Hijau Zamrud" (Emerald)** dan **"Hijau Pinus" (Pine)** untuk memberikan kesan teknologi finansial (*Fintech*) dan kestabilan.
+1. Palet Warna (Color Palette)
 
-### A. Primary Colors (Identitas Brand)
-*   **Taniga Pine (Primary 900):** `#14532D`
-    *   *Penggunaan:* Teks judul tebal (Headers), Sidebar aktif, dan elemen navigasi utama.
-    *   *Kesan:* Kuat, korporat.
-*   **Taniga Emerald (Primary 600):** `#059669`
-    *   *Penggunaan:* Primary Buttons, garis grafik batas wajar, dan ikon aktif.
-    *   *Kesan:* Segar, berteknologi.
-*   **Taniga Mint (Primary 100):** `#D1FAE5`
-    *   *Penggunaan:* Background highlight, badge status, dan efek hover pada tombol.
+Menggunakan pendekatan monokromatik hijau untuk menjaga identitas Agritech yang segar dan bersih. Hindari penggunaan warna hitam pekat (#000000).
 
-### B. Neutral & Background Colors
-> [!IMPORTANT]
-> Sangat penting untuk tidak menggunakan warna hitam pekat `#000000`.
+A. Primary Colors (Identitas Brand)
 
-*   **Background Base:** `#F8FAFC` (Slate 50)
-    *   *Penggunaan:* Latar belakang aplikasi utama. Memberikan kesan *clean* dan lega (tidak menyilaukan mata).
-*   **Card Surface:** `#FFFFFF` (White)
-    *   *Penggunaan:* Warna dasar untuk kotak dashboard dan kontainer dengan sedikit bayangan (*shadow*).
-*   **Text Body:** `#475569` (Slate 600)
-    *   *Penggunaan:* Untuk teks paragraf biasa, label data. Lebih lembut dari hitam pekat, mengurangi kelelahan mata.
+Taniga Emerald (Primary 600): #16A34A (Green 600) -> Warna pahlawan (Hero Color). Digunakan untuk Primary Buttons (seperti tombol "+ Keranjang"), Bottom Navigation aktif, dan garis grafik batas wajar IoT. Kesan: Segar, berteknologi.
 
-### C. Semantic Colors (Status & Alerts)
-Sangat penting untuk indikator sistem IoT.
+Taniga Pine (Primary 900): #14532D (Green 900) -> Digunakan untuk teks judul tebal (Headers) dan elemen yang butuh penekanan korporat. Kesan: Kuat, stabil.
 
-*   **Danger / Heat (Alert):** `#DC2626` (Red 600)
-    *   *Penggunaan:* HANYA saat suhu IoT naik melebihi batas atau transaksi gagal. Latar belakang badge menggunakan `#FEE2E2`.
-*   **Warning:** `#D97706` (Amber 600)
-    *   *Penggunaan:* Estimasi pengiriman terlambat atau baterai IoT lemah.
-*   **Safe / Success:** `#059669` (Emerald)
-    *   *Penggunaan:* Berbagi warna dengan Primary, suhu aman, dana cair.
+Taniga Mint (Primary 50): #F0FDF4 (Green 50) -> Digunakan untuk background highlight, latar badge status, dan efek hover pada tombol menu.
 
----
+B. Neutral & Background Colors
 
-## 2. Tipografi (Typography)
+Background Base Mobile: #F3F4F6 (Gray 100) -> Latar belakang utama aplikasi agar Card produk yang berwarna putih bisa menonjol (pop-up).
 
-Pemilihan font adalah kunci untuk menghindari tampilan "seperti template gratis".
+Card Surface: #FFFFFF (White) -> Warna dasar untuk kotak produk, banner, dan kontainer.
 
-*   **Font Utama (Headers & Angka Metrik):** *Plus Jakarta Sans* atau *Poppins*.
-    *   *Karakteristik:* Geometris, lebar, modern. Memberikan kesan kokoh untuk angka suhu (misal: `14.5°C`) dan nominal uang di Escrow.
-    *   *Penggunaan:* H1, H2, H3, dan Angka utama pada Dashboard Card.
-*   **Font Body (Paragraf & Data Tabel):** *Inter*.
-    *   *Karakteristik:* Netral, sangat rapi untuk dibaca dalam ukuran kecil.
-    *   *Penggunaan:* Label tabel, deskripsi pesanan, navigasi sidebar, dan tooltip grafik.
+Text Body: #475569 (Slate 600) -> Untuk teks paragraf, deskripsi sayur, dan label tabel. Mengurangi kelelahan mata.
 
----
+C. Semantic Colors (Status & Alerts)
 
-## 3. Komponen UI Inti (Core Components)
+Danger / Heat: #DC2626 (Red 600) -> HANYA digunakan saat suhu IoT naik melebihi batas (18°C), pesanan dibatalkan, atau peringatan saldo kurang.
 
-### A. Cards & Containers (Gaya "Glass & Elevated")
-Jangan gunakan garis batas (*border*) hitam tebal. Gunakan teknik *subtle shadow* (bayangan lembut).
+Warning / Pending: #F59E0B (Amber 500) -> Status pesanan "Perlu Dikirim", atau baterai IoT lemah.
 
-*   **Radius Sudut (Border Radius):** `16px` (`rounded-2xl` di Tailwind) untuk kontainer besar, `8px` (`rounded-lg`) untuk input dan button.
-*   **Bayangan (Shadow):** `0 4px 20px rgba(20, 83, 45, 0.05)`. Bayangan ini tidak berwarna abu-abu, melainkan mengambil sedikit warna hijau gelap agar menyatu dengan identitas, menciptakan efek kedalaman yang elegan.
-*   **Borders:** Jika menggunakan border, gunakan garis sangat tipis `1px` dengan warna `#E2E8F0` (Slate 200).
+Info: #2563EB (Blue 600) -> Informasi netral, seperti pesanan sedang "Dalam Perjalanan".
 
-### B. Buttons (Tombol Interaksi)
-*   **Primary Button:** Latar belakang Taniga Emerald, teks Putih, tanpa border. Saat di-hover, tombol sedikit terangkat (`translate-y: -2px`) dengan penambahan bayangan hijau.
-*   **Secondary/Ghost Button:** Latar belakang transparan, teks Taniga Emerald, dengan border tipis.
-*   **Danger Button:** Digunakan untuk aksi destruktif (misal: "Batalkan Pesanan"), menggunakan warna merah redup, **BUKAN** merah terang yang mencolok mata.
+2. Tipografi (Typography)
 
----
+Font Utama (Headers, Harga, & Angka IoT): Poppins.
 
-## 4. Pola Interaksi & Layout Dasar
+Karakteristik: Geometris dan bulat. Sangat kuat untuk menampilkan harga grosir (misal: Rp 21.500) dan angka suhu (misal: 14.5°C).
 
-### A. Konsep "Dashboard Glanceability" (Tampak Sekilas)
-*   **Aturan 3 Detik:** Pengguna harus bisa memahami status kargo mereka dalam 3 detik. Letakkan 3 metrik paling penting (Suhu, Kelembapan, Estimasi Tiba) di baris paling atas, persis di bawah judul halaman. Gunakan ukuran font raksasa (misal: `48px` tebal) untuk angkanya.
+Font Body (Paragraf, Navigasi, Deskripsi): Inter.
 
-### B. Peta & Grafik Terintegrasi (Split View)
-*   **Kiri (60% layar):** Peta GPS interaktif. Peta tidak boleh menampilkan terlalu banyak label (seperti restoran atau SPBU yang tidak relevan). Gunakan style peta "Muted" atau "Light" agar rute dan ikon truk logistik (berwarna hijau) menjadi satu-satunya hal yang menonjol.
-*   **Kanan (40% layar):** Grafik area suhu. Hindari grafik garis biasa. Gunakan *Area Chart* dengan arsiran gradasi hijau di bawah garisnya, dan garis merah putus-putus tebal sebagai penanda "Batas Kritis 18°C".
+Karakteristik: Sangat rapi untuk dibaca dalam ukuran kecil di layar HP.
 
-### C. Micro-Interactions (Human Touch)
-Agar web tidak terasa kaku seperti robot:
-*   **Pulsing Dots:** Untuk indikator "Live IoT" atau "Truk Sedang Berjalan", gunakan elemen titik kecil (*dot*) warna hijau yang berdenyut lambat (*slow pulse animation*) untuk menandakan sistem sedang bernapas (menarik data).
-*   **Skeleton Loading:** Jangan gunakan *Spinner* bulat biasa saat memuat grafik. Gunakan *Skeleton Screen* (blok abu-abu pudar) yang membentuk kerangka grafik, agar transisi saat data masuk terasa lebih halus.
+3. Omnichannel Layout Rules (Aturan Tata Letak)
 
----
+Aplikasi harus merespons mulus antara ukuran layar di bawah ini menggunakan utilitas Tailwind (md:, lg:).
 
-## 5. Aset Ikonografi (Iconography)
+A. Mobile View (Default / < 768px)
 
-*   **Style:** *Line icons* (garis luar, bukan blok pekat). Gunakan library seperti *Phosphor Icons* atau *Lucide* (hindari *FontAwesome solid* yang terlalu umum).
-*   **Ketebalan Garis (Stroke Width):** Konsisten di `2px`.
-*   **Implementasi:** Ikon menu sidebar berwarna abu-abu redup, namun ketika aktif berubah menjadi Taniga Pine (Hijau gelap) dengan ketebalan (*font-weight*) meningkat.
+Pola Navigasi: Menggunakan Bottom Navigation Bar tetap di bawah layar (Beranda, Kategori, Keranjang, Pesanan, Akun). Header mengecil or hilang saat di-scroll ke bawah.
+
+Area Sentuh (Touch Targets): Area tappable minimal 44x44px (Standar Aksesibilitas iOS/Android).
+
+Modals: Semua interaksi pop-up (seperti memilih varian berat sayur) HARUS muncul dari bawah layar sebagai Bottom Sheet, bukan kotak di tengah layar.
+
+B. Desktop / Tablet View (>= 768px)
+
+Pola Navigasi: Bottom Navigation disembunyikan, digantikan oleh Sidebar Menu di sisi kiri.
+
+Ruang Kerja (Workspace): Ruang layar dimanfaatkan maksimal. Peta IoT dan Grafik ditampilkan bersebelahan (Split Screen). Keranjang belanja bisa muncul sebagai Side Panel (Laci Samping) di kanan, bukan halaman baru.
+
+4. Komponen UI Spesifik (Feature-Specific UI)
+
+Berdasarkan referensi benchmark aplikasi terkemuka:
+
+A. Dynamic Promo Banner (Style: Sayurbox)
+
+Rasio: 2:1 or 16:9 yang membentang horizontal dengan ujung membulat (rounded-xl).
+
+Interaksi: Dapat digeser (swipeable carousel) dengan indikator titik (dot indicators) di bagian bawah. Banner harus terasa snappy saat digeser di HP.
+
+B. Product Cards (Style: Sayurbox)
+
+Layout: Grid 2 kolom di Mobile, 4-6 kolom di Desktop.
+
+Elemen Kartu:
+
+Foto sayuran besar dengan latar belakang bersih/transparan.
+
+Label "Harga Spesial B2B" or "Diskon Volume" melayang di atas foto.
+
+Judul dua baris maksimal (Truncated).
+
+Harga dicetak tebal dengan font Poppins.
+
+Tombol "+": Tombol bulat warna Taniga Emerald berada mencolok di pojok kanan bawah foto/kartu untuk "1-Click Add to Cart".
+
+C. Menu Akun & "Toko Saya" (Style: Shopee)
+
+Halaman Akun (Default): Berisi profil pengguna, pesanan terakhir, voucher, dan pengaturan.
+
+Toggle Suplier: Di bagian paling atas (Header), terdapat tombol toggle or link bertuliskan "Toko Saya >".
+
+Dashboard Suplier: Ketika toggle diklik, tema berubah sedikit lebih administratif. Menampilkan Grid Menu berbentuk ikon besar: Produk, Pesanan (Belum Bayar, Perlu Dikirim, Dikirim), Keuangan, Performa Toko, dan Pengaturan.
+
+D. Dasbor Pemantauan IoT
+
+Animasi "Live": Gunakan elemen titik kecil (pulsing dot) warna hijau yang berdenyut untuk indikator bahwa data sensor (suhu/GPS) saat ini sedang terhubung dan live.
+
+Area Chart: Grafik suhu tidak menggunakan line biasa, melainkan Area Chart dengan gradasi warna hijau memudar ke bawah transparan. Dilengkapi garis batas merah putus-putus (border-dashed) di suhu 18°C.
+
+5. Micro-Interactions & UX Polish
+
+Pull-to-Refresh: Halaman Beranda dan Pesanan harus mendukung pull-to-refresh (tarik ke bawah untuk muat ulang) pada perangkat touchscreen.
+
+Skeleton Loading: Hindari spinner bulat bawaan saat menunggu data dari Firebase. Gunakan blok abu-abu pudar (bg-gray-200 animate-pulse) yang menyerupai kerangka konten aslinya.
+
+Haptic Feedback Visual: Tombol seperti "+ Keranjang" harus memiliki efek active (skala mengecil scale-95 and warna sedikit menggelap) saat disentuh, memberikan feedback visual yang memuaskan.

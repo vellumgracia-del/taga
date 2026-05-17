@@ -1,426 +1,106 @@
-# Taniga — Product Requirements Document
-**Tani & Niaga | B2B Smart Agriculture Supply Chain Platform**
-
-> *"Dari Koperasi ke Supermarket — Transparan, Terlacak, Terpercaya"*
-> Mendigitalisasi rantai pasok agrikultur B2B dengan marketplace cerdas, pelacakan IoT real-time, dan sistem escrow terotomasi.
-
-| Field | Detail |
-|---|---|
-| Nama Produk | Taniga — Tani & Niaga |
-| Versi | v1.0.0 |
-| Platform | Progressive Web App (PWA) / Responsive Web App |
-| Tema Desain | Clean Corporate — Monokromatik Hijau & Putih |
-| Kategori | B2B Smart Supply Chain — Agriculture |
-| Tanggal | Mei 2026 |
-
----
-
-## 01. Executive Summary
-
-Taniga adalah platform B2B Smart Supply Chain yang mendigitalisasi rantai pasok agrikultur antara **Koperasi Tani (Supplier)** dan **Supermarket/Restoran (Buyer)**. Sistem menggabungkan marketplace B2B, pelacakan IoT real-time untuk suhu dan lokasi (cold-chain monitoring), serta sistem pembayaran Rekening Bersama (Escrow) yang terotomasi.
-
-**Poin Kunci:**
-- 🌿 **Masalah Inti:** Rantai pasok sayur B2B masih manual, tidak transparan, rawan kerugian akibat kerusakan produk tanpa bukti.
-- 💡 **Solusi:** Satu platform yang menyatukan transaksi B2B + tracking cold-chain IoT + escrow otomatis — semua real-time.
-- 🎯 **Pengguna:** Koperasi Tani (Supplier) dan Supermarket/Restoran (Buyer).
-- 📡 **Diferensiasi:** Alat IoT ESP32 milik Taniga dipinjamkan — data suhu & GPS langsung masuk dashboard Buyer.
-- 🔐 **Kepercayaan:** Uang aman di escrow, baru cair ke Supplier setelah IoT membuktikan produk tiba dalam kondisi baik.
-
----
-
-## 02. Latar Belakang & Pernyataan Masalah
-
-### Konteks Industri
-Distribusi hasil pertanian skala B2B di Indonesia masih didominasi proses manual. Supermarket memesan sayur via telepon/WhatsApp, pembayaran via transfer tanpa jaminan, dan kondisi produk selama perjalanan tidak terpantau sama sekali. Kedua pihak menanggung risiko yang seharusnya bisa dihindari dengan teknologi.
-
-### Pain Points
-
-#### Sisi Koperasi Tani (Supplier)
-- Pembayaran tidak terjamin — buyer bisa menolak kargo tanpa bukti kondisi produk.
-- Tidak ada visibilitas order masuk secara terpusat — semua masih lewat chat.
-- Jika produk rusak di jalan, tidak ada bukti objektif — sengketa sulit diselesaikan.
-- Pencairan dana lambat dan tidak transparan.
-
-#### Sisi Supermarket / Restoran (Buyer)
-- Tidak bisa verifikasi kondisi suhu produk selama pengiriman cold-chain.
-- Tidak ada tracking GPS — tidak tahu posisi truk.
-- Ketika produk tiba dalam kondisi buruk, sulit membuktikan di mana masalah terjadi.
-- Proses pengadaan tersebar di banyak saluran komunikasi berbeda.
-
-### Dampak Terukur
-
-| Masalah | Dampak Nyata |
-|---|---|
-| Tidak ada cold-chain monitoring | ±15–25% produk sayur rusak sebelum tiba ke Buyer |
-| Tidak ada escrow | Sengketa pembayaran tidak bisa diselesaikan secara objektif |
-| Proses manual via chat | Waktu proses order 3–5x lebih lama dari yang seharusnya |
-| Tidak ada data historis | Koperasi tidak bisa optimasi rute dan jadwal pengiriman |
-
----
-
-## 03. Visi, Misi & Ukuran Keberhasilan
-
-### Visi
-> *"Menjadi infrastruktur digital rantai pasok agrikultur B2B yang paling terpercaya di Indonesia — di mana setiap transaksi terjamin, setiap pengiriman terpantau, dan setiap pihak terlindungi."*
-
-### Misi
-1. Eliminasi ketidakpastian transaksi B2B sayur dengan sistem escrow terotomasi.
-2. Berikan visibilitas penuh rantai dingin kepada Buyer melalui data IoT real-time.
-3. Permudah operasional Koperasi dengan manajemen order, katalog, dan dompet digital terpusat.
-4. Bangun kepercayaan jangka panjang antara Supplier dan Buyer berbasis data objektif, bukan opini.
-
-### Ukuran Keberhasilan (OKR)
-
-| Target | Cara Ukur |
-|---|---|
-| Kepercayaan transaksi | Tingkat sengketa order < 2% dalam 6 bulan pertama |
-| Kualitas pengiriman | Produk rusak terdeteksi IoT berkurang minimal 40% |
-| Efisiensi operasional | Waktu proses order dari pengajuan ke dispatch berkurang 60% |
-| Adopsi platform | 50 Koperasi aktif + 200 Buyer terdaftar di bulan ke-6 |
-| Performa teknis | Lighthouse Score > 90 untuk Performance & PWA |
-| Reliabilitas IoT | Uptime alat IoT > 99% selama masa perjalanan aktif |
-
----
-
-## 04. User Personas
-
-### 🌾 Pak Darmawan — Ketua Koperasi Tani (Supplier)
-
-**Pain Points:**
-- Buyer sering tolak kargo dengan alasan "basi" tanpa bukti
-- Kelola 10+ order sekaligus hanya lewat WhatsApp
-- Tidak tahu kapan pembayaran benar-benar masuk
-- Alat pelacak pengiriman mahal dan susah dipakai
-
-**Kebutuhan Utama:**
-- Dashboard order masuk yang jelas dan terorganisir
-- Konfirmasi dana aman di escrow sebelum kirim barang
-- Pairing alat IoT ke order cukup dengan satu klik
-- Laporan pencairan dana yang transparan
-
-**Goal:** Kirim barang dengan tenang karena tahu produk terpantau dan uang terjamin.
-
----
-
-### 🏬 Bu Sinta — Procurement Manager Supermarket (Buyer)
-
-**Pain Points:**
-- Tidak bisa buktikan di mana produk mulai rusak selama transit
-- Koordinasi pengadaan tersebar di email, WA, dan telepon
-- Truk terlambat tapi tidak bisa dipantau posisinya
-- Supplier kadang kirim produk berbeda dari yang dipesan
-
-**Kebutuhan Utama:**
-- Live map + grafik suhu pengiriman yang bisa dipantau kapan saja
-- Notifikasi otomatis jika suhu cold-chain melebihi batas aman
-- Satu platform untuk semua vendor sayur
-- Bukti data IoT sebagai dasar klaim sengketa
-
-**Goal:** Pastikan produk tiba segar, tepat waktu, dan ada datanya jika ada masalah.
-
----
-
-## 05. Arsitektur & Tech Stack
-
-Sistem dibangun dengan arsitektur **Serverless + Microservices ringan** untuk skalabilitas tinggi dan latensi rendah, khususnya untuk streaming data IoT.
-
-### 5A — Frontend (Web Client)
-
-| Layer | Teknologi | Kenapa? |
-|---|---|---|
-| Framework | Next.js (typescript) | Performa build cepat + HMR. Ekosistem luas untuk komponen dashboard kompleks. |
-| Styling | Tailwind CSS | Utility-first CSS untuk desain kustom cepat. Konsistensi visual tanpa framework berat. |
-| Komponen UI | Headless UI / Radix UI | Komponen accessible (modal, dropdown) tanpa opini styling — cocok untuk desain korporat. |
-| State Management | Zustand | Ringan dan terdesentralisasi. Cocok untuk dashboard kompleks tanpa boilerplate Redux. |
-| Charts | Chart.js (react-chartjs-2) | Grafik historis suhu & kelembapan. Performa baik untuk data time-series. |
-| Maps | Leaflet.js (react-leaflet) | Live Map Tracking dengan OpenStreetMap. Open-source, tidak butuh API key berbayar. |
-| PWA | Workbox | Offline caching, Service Workers, Install to Homescreen. Target Lighthouse > 90. |
-
-### 5B — Backend & Database (Firebase Ecosystem)
-
-| Layer | Teknologi | Kenapa? |
-|---|---|---|
-| Auth | Firebase Authentication | Email/Password, Google OAuth, OTP HP. Custom Claims untuk otorisasi role. |
-| Database Utama | Firebase Firestore | NoSQL untuk data relasional: profil user, katalog produk, transaksi, saldo dompet. |
-| IoT Database | Firebase Realtime DB | Latensi super rendah untuk ratusan baris payload JSON per menit dari alat IoT. |
-| Backend Logic | Firebase Cloud Functions | Trigger notifikasi bahaya (suhu > 18°C), webhook payment, sinkronisasi IoT. |
-| Notifications | Firebase Cloud Messaging | Push notification ke browser/PWA — peringatan suhu kritis langsung ke Buyer. |
-
-### 5C — Integrasi Pihak Ketiga
-
-| Layer | Teknologi | Kenapa? |
-|---|---|---|
-| Payment / Escrow | Midtrans | Generate VA + Split Payment otomatis ke rekening Koperasi setelah escrow release. |
-| Push Notif | Firebase Cloud Messaging (FCM) | Alert suhu dan update status order ke semua device terdaftar. |
-
-### 5D — Perangkat Keras IoT
-
-| Komponen | Spesifikasi | Fungsi |
-|---|---|---|
-| MCU | ESP32 | Bertenaga, mendukung Store & Forward ke SPIFFS saat sinyal hilang. |
-| Konektivitas | GSM SIM800L V2 | GPRS langsung ke Firebase RTDB via REST API. Tidak bergantung WiFi. |
-| Sensor | DHT22 / SHT31 | Suhu dan kelembapan presisi. SHT31 lebih akurat untuk produk sensitif. |
-| GPS | Ublox NEO-6M | Tracking lokasi truk real-time di peta Buyer. |
-| Daya | Li-Ion 18650 x2 + BMS | Portabel, tahan 24+ jam. BMS cegah overcharge/discharge. |
-
-### 5E — Alur Sistem
-
-```
-ESP32 (IoT Device)  →  GSM SIM800L  →  Firebase Realtime DB (telemetry node)
-                                                 ↓
-React PWA (Buyer Dashboard)  ←  subscribe()  ←  RTDB live listener
-
-Buyer  →  Checkout  →  Midtrans (VA)  →  Cloud Function webhook
-                                                          ↓
-                                Firestore order.status = PROCESSING
-                                + FCM Notification ke Supplier
-
-Supplier  →  IoT Pairing  →  Firestore + RTDB device binding
-          →  Dispatch truk
-
-GPS Geofence Trigger  →  Cloud Function  →  Escrow Release API
-                                         →  Firestore status = COMPLETED
-                                         →  FCM ke Supplier & Buyer
-```
-
----
-
-## 06. User Roles & Fitur Sistem
-
-> Sistem membagi pengguna ke tiga peran utama dengan tampilan dashboard yang menyesuaikan **(Multi-tenant view)**.
-
-### 6A — Fitur Supplier (Koperasi Tani)
-
-| Fitur | Deskripsi | Prioritas |
-|---|---|---|
-| Manajemen Katalog | CRUD produk: nama, harga grosir harian, stok, foto. | P1 |
-| Manajemen Pesanan | Dashboard order masuk per status. Notifikasi saat dana masuk escrow. | P1 |
-| IoT Device Pairing | Kaitkan ID ESP32 ke ID Pesanan sebelum truk berangkat — satu klik. | P1 |
-| Manajemen Perangkat IoT | Lihat status online/offline dan % baterai seluruh alat yang dipinjamkan. | P1 |
-| Dompet & Pencairan | Pending Balance dan Available Balance. Withdraw ke rekening koperasi. | P1 |
-| Riwayat Transaksi | Log lengkap semua order + data IoT terlampir. Export ke PDF/CSV. | P2 |
-| Profil Koperasi | Halaman publik: nama, lokasi, komoditas unggulan, rating dari Buyer. | P2 |
-
-### 6B — Fitur Buyer (Supermarket / Restoran)
-
-| Fitur | Deskripsi | Prioritas |
-|---|---|---|
-| B2B Marketplace | Cari produk by kategori, Koperasi, harga grosir, minimum order. | P1 |
-| Checkout & Multi-Payment | Bayar via VA, Kartu Kredit, E-Wallet. VA di-generate otomatis. | P1 |
-| Live Telemetry Dashboard | Peta GPS live + grafik suhu & kelembapan live + indikator ETA. | P1 |
-| Alerting System | Notifikasi pop-up + email merah jika suhu cold-chain melewati threshold. | P1 |
-| Penerimaan & Komplain | Validasi kargo selamat ATAU ajukan sengketa dengan bukti log IoT. | P1 |
-| Riwayat Pembelian | Semua order historis + data IoT terlampir sebagai bukti legal. | P2 |
-| Manajemen Vendor | Daftar Koperasi langganan, rating personal, catatan internal. | P2 |
----
-
-## 07. Alur Kerja Transaksi
-
-### Happy Path
-1. **ORDER CREATED** — Buyer checkout. Sistem generate Invoice Xendit/Midtrans. Status: `PAYMENT_PENDING`.
-2. **ESCROW FUNDED** — Buyer transfer ke VA. Webhook picu Cloud Function. Status: `PROCESSING`. Supplier dapat notifikasi.
-3. **DEVICE PAIRED & DISPATCH** — Supplier muat sayur, nyalakan IoT, pairing di Web App. Truk jalan. Status: `IN_TRANSIT`.
-4. **DATA STREAMING** — ESP32 kirim JSON ke RTDB setiap 2 menit. React App Buyer subscribe RTDB secara real-time.
-5. **DELIVERY ARRIVED** — GPS deteksi truk masuk geofence Buyer ATAU Buyer klik "Terima Kargo". Status: `DELIVERED`.
-6. **ESCROW RELEASED** — Cloud Function cek log RTDB. Suhu aman → API Disbursement ke Supplier dipotong fee platform. Status: `COMPLETED`.
-
-### Dispute Path
-1. Buyer klik "Ajukan Sengketa" — produk tiba dalam kondisi rusak.
-2. Sistem otomatis **lock Escrow** — dana tidak bisa cair ke Supplier.
-3. Admin Taniga terima notifikasi dispute baru.
-4. Admin review **log IoT** (grafik suhu, timestamp, koordinat GPS) sebagai bukti objektif.
-5. Keputusan: Escrow dilepas ke Supplier (data aman) ATAU refund ke Buyer (terbukti rusak dalam transit).
-
----
-
-## 08. Struktur Database
-
-### 8A — Firestore (Data Relasional)
-
-| Koleksi | Field Utama |
-|---|---|
-| `users` | uid, name, role, phone, verified, createdAt, businessName, bankAccount |
-| `products` | productId, supplierId, name, category, price, stock, unit, imageUrl, minOrder |
-| `orders` | orderId, buyerId, supplierId, items[], totalAmount, status, iotDeviceId, paymentRef |
-| `iot_devices` | deviceId, supplierId, status (idle/active/maintenance), batteryLevel, lastSeen |
-| `wallets` | supplierId, pendingBalance, availableBalance, bankAccount, withdrawHistory[] |
-| `disputes` | disputeId, orderId, buyerId, supplierId, reason, iotEvidence, status, resolution |
-| `reviews` | reviewId, orderId, buyerId, supplierId, rating, comment, iotDataSummary |
-
-### 8B — Realtime Database (Data IoT)
-
-```json
-telemetry/
-  {iotDeviceId}/
-    current: {
-      lat: -6.2088,
-      lng: 106.8456,
-      temp: 8.4,
-      hum: 85.2,
-      batteryPct: 74,
-      timestamp: 1748234567
-    }
-    logs/
-      {timestampKey}: { temp, hum, lat, lng }
-```
-
-> `current` → ditimpa setiap 2 menit, digunakan untuk peta live & indikator real-time.
-> `logs` → append-only, digunakan untuk grafik historis suhu di dashboard Buyer.
-
----
-
-## 09. Desain Sistem UI/UX
-
-### Filosofi
-Taniga menggunakan pendekatan **"Clean Corporate"** — profesional, bersih, mencerminkan kepercayaan B2B. Tidak ada elemen dekoratif yang tidak perlu. Palet monokromatik hijau-putih merepresentasikan kesegaran produk pertanian sekaligus citra korporat yang andal.
-
-### Palet Warna
-
-| Nama | Hex | Peran |
-|---|---|---|
-| Deep Forest Green | `#1A5C2A` | Warna korporat utama — navbar, sidebar, tombol primary |
-| Mid Green | `#2E7D3E` | Aksen kedua — hover state, active menu, secondary button |
-| Light Green BG | `#E8F5EA` | Background kartu dan section — segar tanpa ganggu konten |
-| White | `#FFFFFF` | Background halaman utama dan konten area |
-| Dark Charcoal | `#111827` | Teks utama — kontras tinggi, nyaman dibaca |
-| Alert Red | `#B91C1C` | Peringatan suhu kritis IoT — tidak bisa diabaikan |
-| Warning Amber | `#92400E` | Suhu mendekati batas — perlu perhatian, belum kritis |
-
-### Tipografi
-
-| Elemen | Font | Ukuran |
-|---|---|---|
-| Body & UI | Inter / Calibri | 14px Regular, line-height 1.5 |
-| Data IoT | JetBrains Mono | 13px — suhu, koordinat, device ID |
-| Heading 1 | Inter Bold | 28px — judul halaman dashboard |
-| Heading 2 | Inter SemiBold | 22px — judul section dan panel |
-| Caption | Inter Muted | 12px — timestamp, label grafik |
-
-### Komponen Kunci
-
-- **Sidebar Navigasi:** Fixed 240px kiri. Icon + label. Active state: background Deep Green + teks putih. Collapsible di mobile.
-- **IoT Status Card:** Border kiri 4px berwarna (hijau=aman, merah=bahaya, abu=offline). Tampilkan suhu, kelembapan, GPS, baterai dalam satu card.
-- **Live Temperature Chart:** Area chart hijau transparan. Garis threshold merah horizontal di 18°C. Titik anomali otomatis diberi marker merah.
-- **Order Status Badge:** Pill-shaped — abu (Pending), biru (Processing), kuning (In Transit), hijau (Completed), merah (Dispute).
-- **Escrow Progress Bar:** 4 langkah visual yang bergerak seiring status order — selalu terlihat di halaman detail order.
-- **Alert Toast:** Muncul di pojok kanan atas saat suhu lewat threshold. Klik langsung ke detail telemetry order terkait.
-
-### Halaman Utama per Peran
-
-| Peran | Halaman |
-|---|---|
-| Supplier | Dashboard order masuk · Katalog produk · Pairing IoT · Status alat · Dompet |
-| Buyer | Marketplace · Keranjang · Live telemetry dashboard · Riwayat · Vendor |
-| Admin | Platform analytics · Antrian KYC · Inventaris IoT · Panel dispute |
-
----
-
-## 10. Non-Functional Requirements
-
-### 10.1 Offline Tolerance — Store & Forward
-ESP32 **wajib** menyimpan data suhu ke SPIFFS/SD Card saat kehilangan sinyal GPRS. Setelah sinyal pulih, bulk upload berurutan dari timestamp tertua.
-
-- Buffer lokal: maksimal 24 jam data
-- Buyer UI: tampilkan segmen "Data Gap" dengan warna berbeda jika jeda upload > 10 menit
-- Data tidak boleh hilang — ini bukti legal cold-chain
-
-### 10.2 Security & Auth
-- **Firebase Security Rules:** Supplier A tidak bisa baca/modifikasi data Supplier B. Ditest dengan Firebase Emulator Suite.
-- **IoT Node Security:** RTDB node hanya bisa ditulis oleh device dengan token enkripsi unik per alat.
-- **Custom Claims:** Role disimpan di JWT Firebase, divalidasi di setiap Cloud Function.
-- **Escrow Lock:** Order `IN_TRANSIT` tidak bisa dimodifikasi dari sisi manapun — hanya Cloud Function.
-
-### 10.3 PWA Performance
-
-| Aspek | Target |
-|---|---|
-| Lighthouse Score | > 90 untuk Performance, PWA, Accessibility |
-| Format Gambar | WebP — hemat bandwidth hingga 30% |
-| Offline Mode | Halaman utama + order aktif tetap bisa diakses tanpa internet |
-| Time to Interactive | < 3 detik di koneksi 4G standar |
-| Install to Homescreen | PWA manifest dikonfigurasi — bisa install seperti native app |
-
-### 10.4 Hardware Efficiency (IoT)
-- Kirim data tiap 2 menit → mode **Deep Sleep** → hemat baterai hingga 60%
-- Target ketahanan: **24+ jam** perjalanan non-stop
-- **OTA (Over-The-Air) firmware update** via Firebase — tidak perlu ambil fisik alat dari lapangan
-
-### 10.5 Reliability & SLA
-
-| Aspek | SLA / Target |
-|---|---|
-| Firebase RTDB Uptime | 99.95% (SLA Google) |
-| Cloud Functions | Retry otomatis untuk webhook payment |
-| Escrow Release | Maks 30 detik dari trigger geofence ke Available Balance Supplier |
-| Alert Notifikasi | FCM push notification < 5 detik setelah threshold terdeteksi |
-
----
-
-## 11. Model Bisnis
-
-| Sumber | Detail |
-|---|---|
-| Platform Fee | 1.5–2.5% dipotong otomatis dari setiap escrow yang berhasil direlease |
-| Sewa Perangkat IoT | Rp 15.000–25.000 per trip tergantung jarak — alat milik Taniga |
-| Subscription Premium | Supplier Premium: analytics lanjutan + prioritas listing. Buyer Enterprise: API integrasi ERP. |
-| Data Insights | Laporan agregat tren harga komoditas untuk instansi pemerintah & lembaga riset |
-
-**Kenapa model ini kuat:**
-- Fee dipotong hanya saat transaksi berhasil — insentif Taniga aligned dengan kesuksesan kedua pihak
-- IoT sebagai revenue stream sekaligus diferensiasi — kompetitor tidak bisa replikasi tanpa infrastruktur hardware
-- Subscription B2B cenderung sticky — churn rate rendah setelah onboarding
-
----
-
-## 12. Analisis Kompetitor
-
-| Kompetitor | Gap yang Ditinggalkan |
-|---|---|
-| TaniHub / TaniFund | Ada marketplace B2B, tapi tidak ada IoT cold-chain monitoring + escrow terotomasi |
-| Sayurbox | Fokus B2C, bukan B2B — tidak ada fitur Koperasi sebagai Supplier terstruktur |
-| Kedeka / Pasarnow | Ada logistik sayur, tapi tidak ada integrasi sensor suhu + GPS dalam satu platform |
-| SAP Agri / Oracle | Enterprise, terlalu besar dan mahal untuk Koperasi kecil-menengah Indonesia |
-
-**Keunggulan Taniga:**
-- Satu-satunya platform yang integrasikan **marketplace B2B + IoT cold-chain + escrow otomatis** dalam satu produk
-- Alat IoT adalah milik Taniga — bukan bergantung hardware pihak ketiga
-- Data IoT jadi **bukti objektif sengketa** — tidak ada platform lain yang menawarkan ini
-- Dibangun khusus untuk skala Koperasi Indonesia
-
-## 14. Risiko & Mitigasi
-
-| Risiko | Mitigasi |
-|---|---|
-| Sinyal GPRS hilang di jalan | Store & Forward ke SPIFFS — data disimpan lokal, upload batch saat sinyal pulih |
-| Baterai IoT habis sebelum tiba | Deep Sleep mode + 18650 x2 untuk 24+ jam. Alert baterai < 20% ke Supplier |
-| Supplier tidak mau adopsi platform | Onboarding dibantu tim lapangan. Alat IoT dipinjamkan gratis di periode awal |
-| Buyer ragu dengan data IoT | Sertifikasi akurasi sensor ditampilkan. Data write-only dari device — tidak bisa dimanipulasi |
-| Firebase outage | Firestore offline persistence + Cloud Functions retry policy otomatis |
-| Sengketa data IoT tidak konklusif | Admin akses raw log + timestamp. Bisa minta foto fisik sebagai bukti pendukung |
-| Firmware ESP32 molor | MVP bisa demo dengan simulator (data dummy dari script Node.js) — hardware paralel dikembangkan |
-
----
-
-## Ringkasan Teknis
-
-```
-Platform   : B2B Smart Supply Chain Agriculture
-             Marketplace + IoT Cold-Chain + Escrow Otomatis
-
-Frontend   : React.js (Vite) + Tailwind CSS + Zustand
-             Chart.js + Leaflet.js + Workbox (PWA)
-
-Backend    : Firebase Auth + Firestore + Realtime DB
-             Cloud Functions (Node.js) + FCM
-
-IoT HW     : ESP32 + DHT22/SHT31 + GPS NEO-6M
-             GSM SIM800L + Li-Ion 18650 x2 + BMS
-
-Payment    : Xendit / Midtrans
-             Virtual Account + Escrow + Auto Disbursement
-
-Desain     : Clean Corporate — Monokromatik Hijau & Putih
-             #1A5C2A (Primary) · #FFFFFF (Base)
-             Inter/Calibri (UI) · JetBrains Mono (Data IoT)
-```
-Bagi Menjadi Beberapa fase penegerjaan dan implementation plan
+Product Requirements Document
+Project Name: Taniga (Tani & Niaga)
+Version: 1.0 (User Journey, Toko Saya, AI Prompts & IoT Firmware Config)
+Platform: Progressive Web App (PWA) / Fully Responsive Web (Mobile, Tablet, Desktop)
+Theme: Clean Corporate (Monokromatik Hijau & Putih - terinspirasi UI modern E-Grocery & Enterprise Dashboards)
+1. Executive Summary
+Taniga adalah platform B2B Smart Supply Chain yang mendigitalisasi rantai pasok agrikultur antara Koperasi Tani (Suplier) dan Supermarket/Restoran (Buyer). Sistem ini menggabungkan marketplace B2B yang adaptif di segala layar, fitur komunikasi langsung (Chat), pelacakan IoT (Internet of Things) secara real-time, sistem pembayaran Rekening Bersama (Escrow), serta panel kontrol Developer untuk pengawasan operasional teknis, keamanan data, dan manajemen konten promo.
+2. Arsitektur & Tech Stack Lengkap
+Sistem dibangun dengan arsitektur Serverless yang tangguh, memanfaatkan framework full-stack modern untuk keamanan tipe data (type-safety) dan performa maksimal lintas perangkat (Cross-Device).
+A. Front-End & Core Framework (Web Client)
+Core Framework: Next.js (App Router) dengan TypeScript.
+Alasan: Next.js memberikan performa Server-Side Rendering (SSR) agar katalog B2B dimuat seketika dan SEO-friendly. TypeScript sangat krusial untuk mencegah bug (memastikan format data angka suhu IoT dan nominal uang Escrow selalu valid).
+Styling & UI Kit: Tailwind CSS. Menggunakan pendekatan responsif (Breakpoint md:, lg:, xl:) untuk memastikan transisi tata letak yang mulus dari layar HP (Bottom Navigation) ke layar Desktop lebar (Sidebar Navigation & Data Tables).
+State Management: Zustand (ringan dan terintegrasi baik dengan ekosistem React/Next.js).
+Data Visualization: Chart.js & Leaflet.js (dioptimalkan untuk sentuhan di HP dan tampilan grid resolusi tinggi di Desktop, diload secara dinamis / dynamic import).
+PWA Capabilities: Library next-pwa (berbasis Workbox) untuk memberikan pengalaman instalasi layaknya aplikasi Native Android/iOS/Windows Desktop dan fitur dukungan offline.
+B. Back-End & Database (Firebase & Next.js Ecosystem)
+API & Webhook Handling: Next.js API Routes (Route Handlers). Sangat aman untuk menyembunyikan Secret Key dari Xendit/Midtrans dan memproses otorisasi pembayaran.
+Authentication (Alur Login): Firebase Auth.
+Mendukung login via Email & Password serta Google OAuth (SSO).
+Konsep Default: Setiap pendaftar baru secara default akan mendapatkan Custom Claim role: buyer. Jika lolos KYC, claim diperbarui menjadi role: supplier.
+Primary Database: Firebase Firestore (Profil, Katalog Produk, Pesanan, Saldo, Data Promo/Banner).
+Real-time Engine (IoT & Chat): Firebase Realtime Database (RTDB). Menangkap data IoT berkecepatan tinggi DAN memfasilitasi fitur Live Chat.
+Background Tasks Logic: Firebase Cloud Functions (Proses berat di latar belakang seperti validasi KYC otomatis & push notification peringatan IoT).
+
+C. Integrasi Pihak Ketiga & Hardware (IoT Edge)
+Payment Gateway: Midtrans (Sistem Escrow / Split Payment).
+Push Notifications: Firebase Cloud Messaging (FCM).
+Hardware IoT: ESP32 + SIM800L + Sensor Suhu (SHT31) + GPS.
+Manajemen Firmware IoT: Kode C++/Arduino dipisah dari repositori web dan menggunakan manajemen variabel lingkungan (seperti config.h) untuk mencegah kebocoran URL Firebase atau kunci API.
+
+3. User Roles & Alur Transisi (User Journey)
+Konsep platform ini adalah ekosistem terbuka di mana setiap pengguna baru adalah Pembeli, namun memiliki jalur (funnel) untuk meningkatkan akunnya menjadi Penjual.
+
+A. Fitur Buyer (Supermarket / Restoran) - Akses Default
+Setiap akun yang baru login otomatis mendapatkan akses ke fitur ini:
+Omnichannel B2B Marketplace: Berbelanja instan di Mobile or Desktop. Menampilkan Dynamic Banner Slider, kategori, dan katalog produk.
+Live B2B Chat & Telemetry: Mengobrol dengan Suplier dan melacak pesanan aktif melalui Peta GPS dan Grafik Suhu.
+Pengajuan KYC (Upgrade ke Penjual): Di dalam menu navigasi bawah "Akun", terdapat halaman profil pengguna. Di sana ada bagian "Buka Toko Koperasi". Buyer dapat mengisi formulir pengajuan (KYC Form):
+Nama Usaha / Koperasi.
+Upload Foto KTP Penanggung Jawab (Wajib).
+Upload NPWP (Opsional untuk saat ini).
+Menunggu persetujuan Developer/Admin. Selama menunggu, pengguna tetap bisa berbelanja sebagai Buyer.
+
+B. Fitur Suplier (Dasbor "Toko Saya") - Akses Terverifikasi
+Jika dokumen KYC telah disetujui, maka di sudut kiri atas halaman "Akun" akan muncul tombol/ toggle "Toko Saya >" (Gaya navigasi mirip marketplace Shopee). Mengklik toggle ini akan mengalihkan pengguna ke Dashboard Supplier yang berisi menu-menu operasional:
+Produk: Menu untuk menambah produk baru, mengunggah foto, serta mengubah detail harga grosir, stok harian, dan variasi komoditas.
+Pesanan (Manajemen Alur & IoT): Terbagi menjadi 3 tab status utama:
+Belum Dibayar: Pesanan masuk namun Buyer belum melunasi Virtual Account.
+Perlu Dikirim: Buyer sudah bayar (dana masuk Escrow). Di tahap inilah Suplier menyiapkan sayur ke truk. [KRUSIAL] Pada pesanan ini terdapat tombol "Kirim Kargo". Saat diklik, kamera HP akan terbuka untuk melakukan Scan Barcode ID Perangkat IoT (ESP32).
+Dikirim: Setelah IoT berhasil di-scan dan ditautkan, pesanan pindah ke tab ini. Sensor IoT akan mulai mengirimkan data suhu dan GPS secara live.
+Keuangan: Dasbor financial koperasi. Menampilkan:
+Dana Pending (Uang Escrow yang tertahan karena truk masih di perjalanan).
+Saldo Available (Dana yang bisa dicairkan).
+Tombol "Tarik Dana" ke rekening bank koperasi yang terdaftar.
+Performa Toko & Promosi: * Performa: Statistik penjualan dan rating (SEO).
+Promosi: Fitur agar Suplier bisa ikut serta dalam kampanye promosi platform (diskon khusus koperasi).
+Pengaturan Toko & Preview:
+Pengaturan: Mengubah nama, deskripsi koperasi, jam operasional, dan spanduk (banner) etalase toko.
+Kunjungi Toko: Tombol di bagian atas halaman untuk membuka Preview (pratinjau) tampilan toko dari sudut pandang Buyer.
+
+C. Fitur Developer / System Admin (/dev)
+Akses eksklusif yang dioptimalkan untuk Desktop/Tablet bagi operator sistem.
+Verifikasi KYC (Gatekeeper): Panel khusus untuk me-review pengajuan buka toko (KTP/Nama Usaha). Mengklik "Approve" otomatis mengaktifkan fitur "Toko Saya" bagi akun pengguna tersebut.
+Monitoring Perangkat IoT (Device Fleet Management): Memantau seluruh perangkat keras ESP32 dan mendeteksi anomali/kerusakan.
+Manajemen Konten & Promo (CMS Banner): Portal untuk mengatur jadwal, gambar, dan URL klik dari Slider Promo di beranda platform.
+Pusat Resolusi (Dispute Management) & Database Override: Penengah sengketa transaksi dengan akses raw data suhu IoT.
+
+4. Penataan Layout Responsif (Responsive Design Rules)
+Aplikasi akan bereaksi terhadap ukuran layar (breakpoints Tailwind).
+
+4.1. Tampilan Mobile (Lebar Layar < 768px)
+Header: Logo di tengah, Ikon Notifikasi & Chat di kanan, Dropdown Lokasi di bawahnya.
+Navigasi Utama: Menggunakan Bottom Navigation Bar dengan 5 ikon (Beranda, Kategori, Keranjang, Pesanan, Akun) yang mudah dijangkau ibu jari.
+Halaman Akun: Profil pengguna. Jika status role adalah supplier, pojok kiri atas header akan memiliki tautan "Toko Saya >".
+Layout Konten (Beranda):
+Search Bar (Sticky saat di-scroll).
+Banner Promo Slider: (Rasio 16:9 atau 2:1), otomatis bergeser (auto-play) dan bisa di-swipe dengan jari.
+Kategori Cepat: Ikon bulat horizontal.
+Product Grid: Kartu produk berjejer 2 kolom (grid-cols-2).
+Interaksi Khusus: Mendukung fitur Pull-to-Refresh dan menggunakan Bottom Sheet Modals untuk pop-up.
+
+4.2. Tampilan Desktop / Tablet (Lebar Layar >= 768px)
+Navigasi Utama: Menggunakan Sidebar Navigation tetap (fixed) di sisi kiri layar dengan menu yang diperluas.
+Header: Terdapat Search Bar raksasa di tengah, profil user, dan notifikasi di sudut kanan atas.
+Layout Konten (Beranda): Banner Promo ditampilkan dalam bentuk Grid or Wide Carousel yang membentang luas. Product Grid lebarnya 4-6 kolom.
+IoT Dashboard: Layar terbagi (Split View), menampilkan peta (Leaflet) berdampingan dengan grafik (Chart.js) dan panel metrik pesanan dalam satu layar penuh.
+
+5. Batasan Akses, Privasi & Keamanan (Data Isolation)
+Taniga menjamin keamanan dan privasi tingkat korporator (Enterprise-grade Data Isolation).
+Isolasi Keranjang Belanja (Cart Isolation): Akun A tidak akan pernah bisa membaca, melihat, atau memodifikasi keranjang belanja milik Akun B.
+Privasi Transaksi & Riwayat: Data pesanan, riwayat negosiasi (chat), dan alamat bersifat pribadi mutlak antara Buyer, Suplier terkait, dan Developer.
+Keamanan Dompet & Saldo: Akses terhadap koleksi wallets diblokir sepenuhnya untuk entitas luar. Tarik dana (withdraw) hanya bisa ditujukan ke rekening bank yang disetujui saat KYC.
+Proteksi Akses /dev: URL Developer Panel dikunci ganda menggunakan Middleware Next.js (hanya terbuka untuk Custom Claim dev: true).
+
+6. Struktur Database Inti
+A. Firestore (Data Aplikasi)
+users -> {uid} -> role: "buyer" | "supplier" | "dev", name, email, authProvider
+kyc_documents -> {uid} -> businessName, idCardUrl (wajib), npwpUrl (opsional), status: "PENDING|APPROVED|REJECTED", submittedAt
+products -> {productId} -> Katalog Sayur (Hanya bisa di-create jika uid di users berstatus supplier)
+orders -> {orderId} -> Data Pesanan (Memiliki field orderStatus: UNPAID, TO_SHIP, SHIPPED, COMPLETED)
+promos -> {promoId} -> Koleksi Banner Promo
+
+B. Realtime Database (Data Berkecepatan Tinggi)
+telemetry (Node IoT RTDB) -> {iotDeviceId} -> { lat, lng, temp, timestamp }
+chats (Node Pesan/Chat) -> {orderId_or_roomId}
