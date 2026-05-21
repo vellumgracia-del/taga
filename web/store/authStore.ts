@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { User } from "firebase/auth";
 
-export type Role = "buyer" | "supplier" | "admin" | null;
+export type Role = "buyer" | "supplier" | "admin" | "dev" | null;
 
 interface AuthState {
   user: User | null;

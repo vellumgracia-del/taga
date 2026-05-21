@@ -4,6 +4,7 @@ import ResponsiveLayout from "@/components/ResponsiveLayout";
 import { Search, Plus, MapPin, ChevronRight, Star, Bell, MessageCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import { sanityClient, urlFor } from "@/lib/sanity";
+import Image from "next/image";
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("Semua");
@@ -85,10 +86,12 @@ export default function Home() {
         
         {/* Premium Hero Banner via Sanity CMS */}
         <div className="w-full h-48 md:h-72 rounded-3xl overflow-hidden relative group cursor-pointer shadow-lg shadow-taniga-emerald/10">
-          <img 
+          <Image 
             src={bannerImg} 
             alt="Hero Banner" 
-            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            fill
+            priority
+            className="absolute inset-0 object-cover group-hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/60 to-transparent"></div>
           <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-center">
@@ -160,10 +163,12 @@ export default function Home() {
                 
                 {/* Image Container with Aspect Ratio */}
                 <div className="w-full aspect-square bg-gray-50 rounded-2xl mb-4 relative overflow-hidden">
-                  <img 
+                  <Image 
                     src={product.image} 
                     alt={product.name} 
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" 
+                    fill
+                    sizes="(max-width: 768px) 50vw, 20vw"
+                    className="absolute inset-0 object-cover group-hover:scale-110 transition-transform duration-700 ease-out" 
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
                 </div>

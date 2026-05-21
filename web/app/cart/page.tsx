@@ -8,6 +8,7 @@ import { useAuthStore } from "@/store/authStore";
 import dynamic from "next/dynamic";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import Image from "next/image";
 
 const LocationPickerMap = dynamic(() => import("@/components/LocationPickerMap"), { ssr: false });
 
@@ -104,8 +105,8 @@ export default function Cart() {
                       <div className="pt-2">
                         <input type="checkbox" className="w-4 h-4 text-taniga-emerald rounded border-gray-300 focus:ring-taniga-emerald" defaultChecked />
                       </div>
-                      <div className="w-20 h-20 md:w-24 md:h-24 bg-gray-100 rounded-2xl overflow-hidden shrink-0 border border-gray-100 shadow-sm">
-                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                      <div className="w-20 h-20 md:w-24 md:h-24 bg-gray-100 rounded-2xl overflow-hidden shrink-0 border border-gray-100 shadow-sm relative">
+                        <Image src={item.image} alt={item.name} fill sizes="96px" className="object-cover" />
                       </div>
                       <div className="flex-1 flex flex-col justify-between">
                         <div>

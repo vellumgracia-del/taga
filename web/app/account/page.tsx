@@ -7,6 +7,7 @@ import { UserCircle, Store, FileText, Settings, ChevronRight, CheckCircle2, Shie
 import { useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
 const LocationPickerMap = dynamic(() => import("@/components/LocationPickerMap"), { ssr: false });
 
@@ -231,7 +232,7 @@ export default function Account() {
             ].map((product) => (
               <Link href={`/`} key={product.id} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
                 <div className="h-32 bg-gray-100 relative overflow-hidden">
-                  <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <Image src={product.image} alt={product.name} fill sizes="400px" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-3">
                   <h4 className="font-semibold text-xs md:text-sm text-gray-800 line-clamp-2 min-h-[2rem]">{product.name}</h4>
