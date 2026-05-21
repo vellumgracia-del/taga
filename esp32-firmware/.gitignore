@@ -1,0 +1,10 @@
+# Build environment
+.pio
+.vscode
+.idea
+cmake-build-debug/
+
+# Secret Configuration File
+# file config.h menyimpan variabel rahasia seperti API Keys dan Wi-Fi Password.
+# File ini TIDAK BOLEH di-commit ke repositori.
+config.h
