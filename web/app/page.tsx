@@ -3,23 +3,36 @@
 import ResponsiveLayout from "@/components/ResponsiveLayout";
 import { Search, Plus, MapPin, ChevronRight, Star, Bell, MessageCircle } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { sanityClient, urlFor } from "@/lib/sanity";
 import Image from "next/image";
 import { DUMMY_CATEGORIES as categories, DUMMY_PRODUCTS as products } from "@/lib/dummyData";
 
 export default function Home() {
+  const router = useRouter();
   const [activeCategory, setActiveCategory] = useState("Semua");
   const [heroData, setHeroData] = useState<any>(null);
+  const [displayProducts, setDisplayProducts] = useState(products);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     sanityClient.fetch(`*[_type == "heroBanner"][0]`).then((data) => {
       if (data) setHeroData(data);
     }).catch(console.error);
+
+    // Acak urutan produk saat komponen dimuat (refresh)
+    setDisplayProducts([...products].sort(() => 0.5 - Math.random()));
   }, []);
 
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && searchQuery.trim()) {
+      router.push(`/categories?q=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
   const filteredProducts = activeCategory === "Semua" 
-    ? products 
-    : products.filter(p => p.category === activeCategory);
+    ? displayProducts 
+    : displayProducts.filter(p => p.category === activeCategory);
 
   const bannerImg = heroData?.image ? urlFor(heroData.image).url() : "https://images.unsplash.com/photo-1595858117765-5c1fa186064c?auto=format&fit=crop&w=1200&q=80";
   const badgeText = heroData?.badge || "Panen Raya 2026";
@@ -54,7 +67,10 @@ export default function Home() {
         <div className="relative group">
           <input 
             type="text" 
-            placeholder="Cari komoditas pertanian..." 
+            placeholder="Cari komoditas (tekan Enter)" 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={handleSearch}
             className="w-full bg-gray-100/80 text-sm py-2.5 pl-10 pr-4 rounded-xl outline-none focus:ring-2 focus:ring-taniga-emerald/50 focus:bg-white transition-all"
           />
           <Search className="w-4 h-4 text-gray-400 absolute left-3 top-3 group-focus-within:text-taniga-emerald" />
@@ -122,9 +138,9 @@ export default function Home() {
           <div className="flex items-end justify-between mb-5">
             <div>
               <h3 className="text-lg md:text-xl font-bold font-poppins text-gray-800">
-                {activeCategory === "Semua" ? "Rekomendasi B2B" : `Kategori: ${activeCategory}`}
+                {activeCategory === "Semua" ? "Rekomendasi" : `Kategori: ${activeCategory}`}
               </h3>
-              <p className="text-xs md:text-sm text-gray-500 mt-1">Produk segar pilihan hari ini.</p>
+              <p className="text-xs md:text-sm text-gray-500 mt-1">Pilihan produk segar hari ini.</p>
             </div>
             <button className="text-sm text-taniga-emerald font-semibold hover:text-taniga-pine transition-colors flex items-center gap-1 hidden md:flex">
               Lihat Semua <ChevronRight className="w-4 h-4" />

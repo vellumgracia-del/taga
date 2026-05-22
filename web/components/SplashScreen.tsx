@@ -29,16 +29,13 @@ export default function SplashScreen() {
   return (
     <div className="fixed inset-0 z-[9999] bg-taniga-pine flex flex-col items-center justify-center animate-out fade-out duration-700 delay-[2000ms] fill-mode-forwards">
       <div className="relative flex flex-col items-center animate-in zoom-in-95 duration-1000">
-        <div className="w-24 h-24 bg-taniga-emerald text-white rounded-3xl flex items-center justify-center shadow-2xl mb-6 shadow-taniga-emerald/40 animate-pulse">
-          <Leaf className="w-12 h-12" />
+        <div className="flex items-center gap-4 mb-2">
+          <div className="w-16 h-16 bg-taniga-emerald text-white rounded-2xl flex items-center justify-center shadow-lg shadow-taniga-emerald/40 animate-pulse">
+            <Leaf className="w-8 h-8" />
+          </div>
+          <h1 className="text-4xl font-bold font-poppins text-white tracking-tight">Taniga</h1>
         </div>
-        <h1 className="text-4xl font-bold font-poppins text-white tracking-tight">Taniga</h1>
-        <p className="text-taniga-mint text-sm font-semibold tracking-widest uppercase mt-2 opacity-80">Agri-Tech B2B</p>
-      </div>
-      
-      <div className="absolute bottom-10 flex flex-col items-center">
-        <div className="w-8 h-8 border-4 border-taniga-emerald border-t-white rounded-full animate-spin mb-4"></div>
-        <p className="text-white/60 text-xs">Memuat Ekosistem Taniga...</p>
+        <p className="text-taniga-mint text-xs font-medium tracking-wide mt-2 opacity-90">Kesegaran tani terjamin teknologi</p>
       </div>
     </div>
   );

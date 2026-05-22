@@ -1,13 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Search, ShoppingCart, User, Bell, MessageCircle } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { Search, ShoppingCart, User, Bell, MessageCircle, Leaf } from "lucide-react";
 import { useAuthStore } from "@/store/authStore";
+import { useState } from "react";
 
 export default function TopNavbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const { user } = useAuthStore();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && searchQuery.trim()) {
+      router.push(`/categories?q=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
+  const handleSearchClick = () => {
+    if (searchQuery.trim()) {
+      router.push(`/categories?q=${encodeURIComponent(searchQuery)}`);
+    }
+  };
 
   return (
     <header className="hidden md:block sticky top-0 z-50 glass-header">
@@ -15,12 +30,11 @@ export default function TopNavbar() {
         
         {/* Logo & Branding */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 bg-taniga-emerald text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-sm group-hover:scale-105 transition-transform">
-            T
+          <div className="w-10 h-10 bg-taniga-pine text-white rounded-xl flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
+            <Leaf className="w-6 h-6" />
           </div>
-          <div className="hidden lg:block">
-            <h1 className="text-xl font-bold font-poppins text-taniga-pine tracking-tight">Taniga</h1>
-            <p className="text-[10px] font-semibold text-taniga-emerald uppercase tracking-widest">Agri-Tech B2B</p>
+          <div>
+            <h1 className="text-xl font-bold font-poppins text-gray-800 tracking-tight">Taniga</h1>
           </div>
         </Link>
 
@@ -28,12 +42,15 @@ export default function TopNavbar() {
         <div className="flex-1 max-w-2xl relative group">
           <input 
             type="text" 
-            placeholder="Cari komoditas, suplier, atau wilayah..." 
+            placeholder="Cari komoditas, suplier, atau wilayah (tekan Enter)" 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={handleSearch}
             className="w-full bg-gray-50/80 border border-gray-200 text-sm py-3.5 pl-12 pr-4 rounded-full outline-none focus:bg-white focus:ring-4 focus:ring-taniga-mint focus:border-taniga-emerald transition-all"
           />
           <Search className="w-5 h-5 text-gray-400 absolute left-4 top-3.5 group-focus-within:text-taniga-emerald transition-colors" />
           <div className="absolute right-2 top-2">
-            <button className="bg-taniga-pine text-white text-xs font-bold px-4 py-1.5 rounded-full hover:bg-taniga-emerald transition-colors shadow-sm">
+            <button onClick={handleSearchClick} className="bg-taniga-pine text-white text-xs font-bold px-4 py-1.5 rounded-full hover:bg-taniga-emerald transition-colors shadow-sm">
               Cari
             </button>
           </div>

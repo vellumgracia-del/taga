@@ -58,8 +58,8 @@ export default function Cart() {
   };
 
   const cartItems = [
-    { id: 1, name: "Sawi Hijau Segar Premium", price: "Rp 12.000", qty: 50, unit: "kg", image: "https://images.unsplash.com/photo-1622381373515-d1ce4999f7d2?auto=format&fit=crop&w=150&q=80", supplier: "Koperasi Tani Makmur" },
-    { id: 2, name: "Tomat Merah Super Grade A", price: "Rp 18.000", qty: 20, unit: "kg", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=150&q=80", supplier: "Koperasi Tani Makmur" },
+    { id: 1, name: "Pakcoy Hidroponik Segar Premium", price: "Rp 15.000", qty: 50, unit: "kg", image: "https://images.unsplash.com/photo-1557844352-761f2565b576?auto=format&fit=crop&w=150&q=80", supplier: "Koperasi Tani Makmur" },
+    { id: 2, name: "Tomat Ceri Manis Premium", price: "Rp 25.000", qty: 20, unit: "kg", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=150&q=80", supplier: "Koperasi Tani Makmur" },
   ];
 
   const handleCheckout = () => {

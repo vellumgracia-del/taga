@@ -5,11 +5,21 @@ import { DUMMY_CATEGORIES, DUMMY_PRODUCTS } from "@/lib/dummyData";
 import { Search, ShoppingCart, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 
-export default function Categories() {
+function CategoriesContent() {
+  const searchParams = useSearchParams();
+  const initialQuery = searchParams.get("q") || "";
+  
   const [activeCategory, setActiveCategory] = useState("Semua");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
+
+  useEffect(() => {
+    if (initialQuery) {
+      setSearchQuery(initialQuery);
+    }
+  }, [initialQuery]);
 
   const filteredProducts = DUMMY_PRODUCTS.filter((product) => {
     const matchCategory = activeCategory === "Semua" || product.category === activeCategory;
@@ -118,5 +128,13 @@ export default function Categories() {
         </div>
       </div>
     </ResponsiveLayout>
+  );
+}
+
+export default function Categories() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-sm text-gray-500">Memuat halaman...</div>}>
+      <CategoriesContent />
+    </Suspense>
   );
 }

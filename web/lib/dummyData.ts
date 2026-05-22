@@ -96,4 +96,48 @@ export const DUMMY_PRODUCTS = [
     rating: 4.8, 
     sold: "4k+" 
   },
+  { 
+    id: 9, 
+    category: "Bumbu", 
+    name: "Cabai Rawit Merah Setan", 
+    price: "Rp 65.000", 
+    unit: "per kg", 
+    image: "https://images.unsplash.com/photo-1588017042531-15c0a37de58f?auto=format&fit=crop&w=600&q=80", 
+    discount: "Grosir", 
+    rating: 4.8, 
+    sold: "4k+" 
+  },
+  { 
+    id: 10, 
+    category: "Sayuran", 
+    name: "Wortel Brastagi Pilihan", 
+    price: "Rp 15.000", 
+    unit: "per kg", 
+    image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?auto=format&fit=crop&w=600&q=80", 
+    discount: "Promo", 
+    rating: 4.7, 
+    sold: "1k+" 
+  },
+  { 
+    id: 11, 
+    category: "Beras", 
+    name: "Beras Mentik Wangi", 
+    price: "Rp 80.000", 
+    unit: "per karung", 
+    image: "https://images.unsplash.com/photo-1586201375761-83865001e8ac?auto=format&fit=crop&w=600&q=80", 
+    discount: "Grosir", 
+    rating: 4.8, 
+    sold: "10k+" 
+  },
+  { 
+    id: 12, 
+    category: "Protein", 
+    name: "Telur Bebek Omega 3", 
+    price: "Rp 35.000", 
+    unit: "per rak", 
+    image: "https://images.unsplash.com/photo-1587486913049-53fc88980fdc?auto=format&fit=crop&w=600&q=80", 
+    discount: "", 
+    rating: 4.9, 
+    sold: "12k+" 
+  }
 ];
