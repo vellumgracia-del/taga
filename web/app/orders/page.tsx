@@ -80,7 +80,7 @@ export default function Orders() {
           </div>
           <div className="h-48 md:h-64 w-full bg-gray-100 relative pointer-events-none opacity-80">
             {/* Map Mockup - Kita gunakan komponen map yang sudah ada dan di-disable interaksinya jika memungkinkan, atau sekadar menampilkannya */}
-            <LocationPickerMap defaultPosition={[-6.2088, 106.8456]} onLocationSelect={() => {}} />
+            <LocationPickerMap initialLat={-6.2088} initialLng={106.8456} onLocationSelect={() => {}} />
             <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent z-[400]"></div>
             <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-xl border border-gray-100 shadow-lg z-[401] flex items-center gap-3">
               <div className="w-10 h-10 bg-taniga-emerald/10 text-taniga-emerald rounded-full flex items-center justify-center shrink-0">
