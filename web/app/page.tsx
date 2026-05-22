@@ -5,6 +5,7 @@ import { Search, Plus, MapPin, ChevronRight, Star, Bell, MessageCircle } from "l
 import { useState, useEffect } from "react";
 import { sanityClient, urlFor } from "@/lib/sanity";
 import Image from "next/image";
+import { DUMMY_CATEGORIES as categories, DUMMY_PRODUCTS as products } from "@/lib/dummyData";
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("Semua");
@@ -15,28 +16,6 @@ export default function Home() {
       if (data) setHeroData(data);
     }).catch(console.error);
   }, []);
-
-  const categories = [
-    { name: "Semua", icon: "🌱" },
-    { name: "Sayuran", icon: "🥬" },
-    { name: "Buah", icon: "🍎" },
-    { name: "Beras", icon: "🌾" },
-    { name: "Bumbu", icon: "🧄" },
-    { name: "Protein", icon: "🥚" }
-  ];
-
-  const products = [
-    { id: 1, category: "Sayuran", name: "Sawi Hijau Segar Premium", price: "Rp 12.000", unit: "per kg", image: "https://images.unsplash.com/photo-1622381373515-d1ce4999f7d2?auto=format&fit=crop&w=600&q=80", discount: "Grosir", rating: 4.8, sold: "2k+" },
-    { id: 2, category: "Sayuran", name: "Tomat Merah Super Grade A", price: "Rp 18.000", unit: "per kg", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&q=80", discount: "", rating: 4.9, sold: "5k+" },
-    { id: 3, category: "Sayuran", name: "Wortel Brastagi Pilihan", price: "Rp 15.000", unit: "per kg", image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?auto=format&fit=crop&w=600&q=80", discount: "Promo", rating: 4.7, sold: "1k+" },
-    { id: 4, category: "Buah", name: "Apel Fuji Manis Ekspor", price: "Rp 45.000", unit: "per kg", image: "https://images.unsplash.com/photo-1560806887-1e4cd0b6fac6?auto=format&fit=crop&w=600&q=80", discount: "", rating: 5.0, sold: "800+" },
-    { id: 5, category: "Buah", name: "Pisang Cavendish Organik", price: "Rp 22.000", unit: "per sisir", image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=600&q=80", discount: "Terlaris", rating: 4.9, sold: "3k+" },
-    { id: 6, category: "Beras", name: "Beras Rojo Lele 5kg", price: "Rp 75.000", unit: "per karung", image: "https://images.unsplash.com/photo-1586201375761-83865001e8ac?auto=format&fit=crop&w=600&q=80", discount: "Grosir", rating: 4.8, sold: "10k+" },
-    { id: 7, category: "Bumbu", name: "Bawang Merah Brebes", price: "Rp 35.000", unit: "per kg", image: "https://images.unsplash.com/photo-1615484477778-ca3b77940c25?auto=format&fit=crop&w=600&q=80", discount: "", rating: 4.6, sold: "500+" },
-    { id: 8, category: "Bumbu", name: "Bawang Putih Kating", price: "Rp 40.000", unit: "per kg", image: "https://images.unsplash.com/photo-1559103524-814cb2091bf2?auto=format&fit=crop&w=600&q=80", discount: "Promo", rating: 4.7, sold: "2k+" },
-    { id: 9, category: "Protein", name: "Telur Ayam Negeri Fresh", price: "Rp 28.000", unit: "per kg", image: "https://images.unsplash.com/photo-1587486913049-53fc88980fdc?auto=format&fit=crop&w=600&q=80", discount: "", rating: 4.9, sold: "12k+" },
-    { id: 10, category: "Sayuran", name: "Cabai Rawit Merah Setan", price: "Rp 65.000", unit: "per kg", image: "https://images.unsplash.com/photo-1588017042531-15c0a37de58f?auto=format&fit=crop&w=600&q=80", discount: "Grosir", rating: 4.8, sold: "4k+" },
-  ];
 
   const filteredProducts = activeCategory === "Semua" 
     ? products 
