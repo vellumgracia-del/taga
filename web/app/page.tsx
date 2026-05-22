@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { sanityClient, urlFor } from "@/lib/sanity";
 import Image from "next/image";
+import Link from "next/link";
 import { DUMMY_PRODUCTS as products } from "@/lib/dummyData";
 
 export default function Home() {
@@ -64,10 +65,10 @@ export default function Home() {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <button className="relative w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 rounded-full transition-colors">
+            <Link href="/messages" className="relative w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 rounded-full transition-colors">
               <MessageCircle className="w-5 h-5" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-taniga-danger rounded-full border-2 border-white"></span>
-            </button>
+            </Link>
             <button className="relative w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 rounded-full transition-colors">
               <Bell className="w-5 h-5" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-taniga-danger rounded-full border-2 border-white"></span>
