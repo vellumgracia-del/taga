@@ -139,5 +139,93 @@ export const DUMMY_PRODUCTS = [
     discount: "", 
     rating: 4.9, 
     sold: "12k+" 
+  },
+  { 
+    id: 13, 
+    category: "Sayuran", 
+    name: "Brokoli Hijau Segar", 
+    price: "Rp 22.000", 
+    unit: "per kg", 
+    image: "https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=600&q=80", 
+    discount: "Promo", 
+    rating: 4.8, 
+    sold: "2.5k+" 
+  },
+  { 
+    id: 14, 
+    category: "Buah", 
+    name: "Jeruk Medan Manis", 
+    price: "Rp 25.000", 
+    unit: "per kg", 
+    image: "https://images.unsplash.com/photo-1611080661285-4509ab8298dc?auto=format&fit=crop&w=600&q=80", 
+    discount: "Terlaris", 
+    rating: 4.9, 
+    sold: "8k+" 
+  },
+  { 
+    id: 15, 
+    category: "Bumbu", 
+    name: "Jahe Merah Super", 
+    price: "Rp 40.000", 
+    unit: "per kg", 
+    image: "https://images.unsplash.com/photo-1596557620215-081977de385e?auto=format&fit=crop&w=600&q=80", 
+    discount: "", 
+    rating: 4.7, 
+    sold: "1.2k+" 
+  },
+  { 
+    id: 16, 
+    category: "Protein", 
+    name: "Daging Sapi Has Dalam", 
+    price: "Rp 135.000", 
+    unit: "per kg", 
+    image: "https://images.unsplash.com/photo-1603048297172-c92544798d5e?auto=format&fit=crop&w=600&q=80", 
+    discount: "Grosir", 
+    rating: 4.9, 
+    sold: "3k+" 
+  },
+  { 
+    id: 17, 
+    category: "Sayuran", 
+    name: "Bayam Hijau Akar", 
+    price: "Rp 5.000", 
+    unit: "per ikat", 
+    image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=600&q=80", 
+    discount: "", 
+    rating: 4.8, 
+    sold: "5k+" 
+  },
+  { 
+    id: 18, 
+    category: "Buah", 
+    name: "Semangka Merah Tanpa Biji", 
+    price: "Rp 10.000", 
+    unit: "per kg", 
+    image: "https://images.unsplash.com/photo-1587049352847-8d4e5a4a55f8?auto=format&fit=crop&w=600&q=80", 
+    discount: "Grosir", 
+    rating: 4.8, 
+    sold: "15k+" 
+  },
+  { 
+    id: 19, 
+    category: "Sayuran", 
+    name: "Kubis Putih Super", 
+    price: "Rp 8.000", 
+    unit: "per kg", 
+    image: "https://images.unsplash.com/photo-1556801712-76c8eb07bbc9?auto=format&fit=crop&w=600&q=80", 
+    discount: "", 
+    rating: 4.7, 
+    sold: "2k+" 
+  },
+  { 
+    id: 20, 
+    category: "Bumbu", 
+    name: "Bawang Putih Kating", 
+    price: "Rp 35.000", 
+    unit: "per kg", 
+    image: "https://images.unsplash.com/photo-1618164436241-ec47ea336f34?auto=format&fit=crop&w=600&q=80", 
+    discount: "Terlaris", 
+    rating: 4.9, 
+    sold: "6k+" 
   }
 ];

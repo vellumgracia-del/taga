@@ -6,18 +6,32 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { sanityClient, urlFor } from "@/lib/sanity";
 import Image from "next/image";
-import { DUMMY_CATEGORIES as categories, DUMMY_PRODUCTS as products } from "@/lib/dummyData";
+import { DUMMY_PRODUCTS as products } from "@/lib/dummyData";
 
 export default function Home() {
   const router = useRouter();
-  const [activeCategory, setActiveCategory] = useState("Semua");
   const [heroData, setHeroData] = useState<any>(null);
+  const [promoData, setPromoData] = useState<any[]>([]);
   const [displayProducts, setDisplayProducts] = useState(products);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
+    // Fetch Hero Banner
     sanityClient.fetch(`*[_type == "heroBanner"][0]`).then((data) => {
       if (data) setHeroData(data);
+    }).catch(console.error);
+
+    // Fetch Promos (Contoh jika ada CMS Sanity type promo, atau array kosong)
+    sanityClient.fetch(`*[_type == "promoBanner"][0...3]`).then((data) => {
+      if (data && data.length > 0) {
+        setPromoData(data);
+      } else {
+        // Fallback Promo Dummy jika CMS belum siap
+        setPromoData([
+          { id: 1, title: "Diskon 50% Bawang Merah", image: "https://images.unsplash.com/photo-1559103524-814cb2091bf2?auto=format&fit=crop&w=400&q=80" },
+          { id: 2, title: "Gratis Ongkir Pulau Jawa", image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?auto=format&fit=crop&w=400&q=80" }
+        ]);
+      }
     }).catch(console.error);
 
     // Acak urutan produk saat komponen dimuat (refresh)
@@ -29,10 +43,6 @@ export default function Home() {
       router.push(`/categories?q=${encodeURIComponent(searchQuery)}`);
     }
   };
-
-  const filteredProducts = activeCategory === "Semua" 
-    ? displayProducts 
-    : displayProducts.filter(p => p.category === activeCategory);
 
   const bannerImg = heroData?.image ? urlFor(heroData.image).url() : "https://images.unsplash.com/photo-1595858117765-5c1fa186064c?auto=format&fit=crop&w=1200&q=80";
   const badgeText = heroData?.badge || "Panen Raya 2026";
@@ -106,39 +116,40 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Categories Section */}
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg md:text-xl font-bold font-poppins text-gray-800">Eksplor Kategori</h3>
-          </div>
-          <div className="flex gap-3 md:gap-5 overflow-x-auto pb-4 scrollbar-hide snap-x">
-            {categories.map((cat, i) => (
-              <button 
-                key={i} 
-                onClick={() => setActiveCategory(cat.name)}
-                className={`snap-start flex flex-col items-center gap-2 min-w-[72px] md:min-w-[88px] transition-all duration-300 ${activeCategory === cat.name ? 'scale-105' : 'hover:scale-105 opacity-70 hover:opacity-100'}`}
-              >
-                <div className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center text-3xl shadow-sm transition-colors duration-300 ${
-                  activeCategory === cat.name 
-                    ? 'bg-taniga-pine text-white ring-4 ring-taniga-mint' 
-                    : 'bg-white border border-gray-100 hover:border-gray-300'
-                }`}>
-                  {cat.icon}
+        {/* Promo Section */}
+        {promoData.length > 0 && (
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg md:text-xl font-bold font-poppins text-gray-800">Promo Menarik</h3>
+            </div>
+            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x">
+              {promoData.map((promo, i) => (
+                <div key={i} className="snap-start min-w-[280px] md:min-w-[320px] h-32 md:h-40 rounded-3xl overflow-hidden relative group cursor-pointer shadow-sm">
+                  <Image 
+                    src={promo.image ? (promo.image.asset ? urlFor(promo.image).url() : promo.image) : ""} 
+                    alt={promo.title || "Promo"} 
+                    fill
+                    sizes="(max-width: 768px) 80vw, 320px"
+                    className="absolute inset-0 object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div className="absolute inset-0 p-4 flex items-end">
+                    <h4 className="text-white font-bold font-poppins text-sm md:text-base leading-snug">
+                      {promo.title}
+                    </h4>
+                  </div>
                 </div>
-                <span className={`text-xs font-semibold ${activeCategory === cat.name ? 'text-taniga-pine font-bold' : 'text-gray-600'}`}>
-                  {cat.name}
-                </span>
-              </button>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Product Grid Section */}
         <div>
           <div className="flex items-end justify-between mb-5">
             <div>
               <h3 className="text-lg md:text-xl font-bold font-poppins text-gray-800">
-                {activeCategory === "Semua" ? "Rekomendasi" : `Kategori: ${activeCategory}`}
+                Rekomendasi
               </h3>
               <p className="text-xs md:text-sm text-gray-500 mt-1">Pilihan produk segar hari ini.</p>
             </div>
@@ -148,7 +159,7 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
-            {filteredProducts.map((product) => (
+            {displayProducts.map((product) => (
               <div key={product.id} className="bg-white border border-gray-100 rounded-3xl p-3 md:p-4 shadow-sm hover:shadow-xl hover:shadow-taniga-emerald/5 hover:-translate-y-1 transition-all duration-300 relative group flex flex-col h-full">
                 {product.discount && (
                   <div className="absolute top-4 left-4 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-full z-10 shadow-sm uppercase tracking-wide">
@@ -195,7 +206,7 @@ export default function Home() {
               </div>
             ))}
             
-            {filteredProducts.length === 0 && (
+            {displayProducts.length === 0 && (
               <div className="col-span-full py-20 flex flex-col items-center justify-center text-center">
                 <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-3">
                   <Search className="w-8 h-8 text-gray-400" />
