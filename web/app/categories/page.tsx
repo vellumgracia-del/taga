@@ -4,7 +4,7 @@ import ResponsiveLayout from "@/components/ResponsiveLayout";
 import { DUMMY_CATEGORIES, DUMMY_PRODUCTS } from "@/lib/dummyData";
 import { Search, ShoppingCart, Star } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 

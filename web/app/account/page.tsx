@@ -3,7 +3,7 @@
 import ResponsiveLayout from "@/components/ResponsiveLayout";
 import Auth from "@/components/Auth";
 import { useAuthStore } from "@/store/authStore";
-import { UserCircle, Store, FileText, Settings, ChevronRight, CheckCircle2, ShieldCheck, Star, ShoppingCart } from "lucide-react";
+import { UserCircle, Store, FileText, Settings, ChevronRight, CheckCircle2, ShieldCheck, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";

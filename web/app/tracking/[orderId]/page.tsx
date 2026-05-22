@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { ChevronLeft, Thermometer, Truck, Navigation, AlertTriangle, CheckCircle2 } from "lucide-react";
-import { ref, onValue, off } from "firebase/database";
+import { ref, onValue } from "firebase/database";
 import { rtdb } from "@/lib/firebase";
 import Link from "next/link";
 
@@ -60,7 +60,7 @@ export default function TrackingPage() {
     });
 
     return () => {
-      off(telemetryRef);
+      unsubscribe();
     };
   }, []);
 

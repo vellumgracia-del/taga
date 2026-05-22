@@ -1,13 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { Search, ShoppingCart, User, Bell, MessageCircle, Leaf } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Search, ShoppingCart, Bell, MessageCircle, Leaf, Star } from "lucide-react";
 import { useAuthStore } from "@/store/authStore";
 import { useState } from "react";
 
 export default function TopNavbar() {
-  const pathname = usePathname();
   const router = useRouter();
   const { user } = useAuthStore();
   const [searchQuery, setSearchQuery] = useState("");

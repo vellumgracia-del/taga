@@ -1,7 +1,7 @@
 "use client";
 
 import ResponsiveLayout from "@/components/ResponsiveLayout";
-import { MessageSquare, ChevronLeft, Search } from "lucide-react";
+import { MessageSquare, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 

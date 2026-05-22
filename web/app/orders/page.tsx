@@ -1,7 +1,7 @@
 "use client";
 
 import ResponsiveLayout from "@/components/ResponsiveLayout";
-import { MessageCircle, MapPin, Truck, CheckCircle2, AlertCircle, Thermometer, Box, FileText } from "lucide-react";
+import { MessageCircle, MapPin, Truck, AlertCircle, Thermometer, Box } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import TelemetryChart from "@/components/TelemetryChart";
