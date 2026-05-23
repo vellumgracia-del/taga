@@ -58,7 +58,7 @@ export const DUMMY_PRODUCTS = [
     name: "Beras Pandan Wangi 5kg", 
     price: "Rp 85.000", 
     unit: "per karung", 
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e8ac?auto=format&fit=crop&w=600&q=80", 
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Basmati_Rice.jpg/800px-Basmati_Rice.jpg", 
     discount: "Grosir", 
     rating: 4.8, 
     sold: "10k+" 
@@ -69,7 +69,7 @@ export const DUMMY_PRODUCTS = [
     name: "Bawang Merah Probolinggo", 
     price: "Rp 30.000", 
     unit: "per kg", 
-    image: "https://images.unsplash.com/photo-1559103524-814cb2091bf2?auto=format&fit=crop&w=600&q=80", 
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Red_onion.jpg/800px-Red_onion.jpg", 
     discount: "", 
     rating: 4.6, 
     sold: "500+" 
@@ -102,7 +102,7 @@ export const DUMMY_PRODUCTS = [
     name: "Cabai Rawit Merah Setan", 
     price: "Rp 65.000", 
     unit: "per kg", 
-    image: "https://images.unsplash.com/photo-1588017042531-15c0a37de58f?auto=format&fit=crop&w=600&q=80", 
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Red_Chilli_Pepper.jpg/800px-Red_Chilli_Pepper.jpg", 
     discount: "Grosir", 
     rating: 4.8, 
     sold: "4k+" 
@@ -124,7 +124,7 @@ export const DUMMY_PRODUCTS = [
     name: "Beras Mentik Wangi", 
     price: "Rp 80.000", 
     unit: "per karung", 
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e8ac?auto=format&fit=crop&w=600&q=80", 
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White_rice.JPG/800px-White_rice.JPG", 
     discount: "Grosir", 
     rating: 4.8, 
     sold: "10k+" 
@@ -135,7 +135,7 @@ export const DUMMY_PRODUCTS = [
     name: "Telur Bebek Omega 3", 
     price: "Rp 35.000", 
     unit: "per rak", 
-    image: "https://images.unsplash.com/photo-1587486913049-53fc88980fdc?auto=format&fit=crop&w=600&q=80", 
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/800px-Chicken_egg_2009-06-04.jpg", 
     discount: "", 
     rating: 4.9, 
     sold: "12k+" 
@@ -157,7 +157,7 @@ export const DUMMY_PRODUCTS = [
     name: "Jeruk Medan Manis", 
     price: "Rp 25.000", 
     unit: "per kg", 
-    image: "https://h5.lazada.co.id/products/jeruk-medan-manis-dan-fresh-asli-1kg-jeruk-manis-segar-buah-jeruk-i5669398925.html", 
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Orange-Fruit-Pieces.jpg/800px-Orange-Fruit-Pieces.jpg", 
     discount: "Terlaris", 
     rating: 4.9, 
     sold: "8k+" 
@@ -168,7 +168,7 @@ export const DUMMY_PRODUCTS = [
     name: "Jahe Merah Super", 
     price: "Rp 40.000", 
     unit: "per kg", 
-    image: "https://images.unsplash.com/photo-1596557620215-081977de385e?auto=format&fit=crop&w=600&q=80", 
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Ginger_root.jpg/800px-Ginger_root.jpg", 
     discount: "", 
     rating: 4.7, 
     sold: "1.2k+" 
@@ -179,7 +179,7 @@ export const DUMMY_PRODUCTS = [
     name: "Daging Sapi Has Dalam", 
     price: "Rp 135.000", 
     unit: "per kg", 
-    image: "https://www.holycowsteak.com/blogs/story/bagian-bagian-daging-sapi", 
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Roast_beef_01.jpg/800px-Roast_beef_01.jpg", 
     discount: "Grosir", 
     rating: 4.9, 
     sold: "3k+" 
@@ -201,7 +201,7 @@ export const DUMMY_PRODUCTS = [
     name: "Semangka Merah Tanpa Biji", 
     price: "Rp 10.000", 
     unit: "per kg", 
-    image: "https://images.unsplash.com/photo-1587049352847-8d4e5a4a55f8?auto=format&fit=crop&w=600&q=80", 
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Watermelon_seedless.jpg/800px-Watermelon_seedless.jpg", 
     discount: "Grosir", 
     rating: 4.8, 
     sold: "15k+" 
@@ -223,7 +223,7 @@ export const DUMMY_PRODUCTS = [
     name: "Bawang Putih Kating", 
     price: "Rp 35.000", 
     unit: "per kg", 
-    image: "https://images.unsplash.com/photo-1618164436241-ec47ea336f34?auto=format&fit=crop&w=600&q=80", 
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Garlic_Press_and_Garlic.jpg/800px-Garlic_Press_and_Garlic.jpg", 
     discount: "Terlaris", 
     rating: 4.9, 
     sold: "6k+" 
