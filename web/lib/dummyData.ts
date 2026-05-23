@@ -157,7 +157,7 @@ export const DUMMY_PRODUCTS = [
     name: "Jeruk Medan Manis", 
     price: "Rp 25.000", 
     unit: "per kg", 
-    image: "https://images.unsplash.com/photo-1611080661285-4509ab8298dc?auto=format&fit=crop&w=600&q=80", 
+    image: "https://h5.lazada.co.id/products/jeruk-medan-manis-dan-fresh-asli-1kg-jeruk-manis-segar-buah-jeruk-i5669398925.html", 
     discount: "Terlaris", 
     rating: 4.9, 
     sold: "8k+" 
@@ -179,7 +179,7 @@ export const DUMMY_PRODUCTS = [
     name: "Daging Sapi Has Dalam", 
     price: "Rp 135.000", 
     unit: "per kg", 
-    image: "https://images.unsplash.com/photo-1603048297172-c92544798d5e?auto=format&fit=crop&w=600&q=80", 
+    image: "https://www.holycowsteak.com/blogs/story/bagian-bagian-daging-sapi", 
     discount: "Grosir", 
     rating: 4.9, 
     sold: "3k+" 
